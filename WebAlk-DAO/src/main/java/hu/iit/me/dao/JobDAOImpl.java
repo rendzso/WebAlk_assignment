@@ -2,19 +2,24 @@ package hu.iit.me.dao;
 
 import hu.iit.me.model.Education;
 import hu.iit.me.model.Job;
+import hu.iit.me.model.Languages;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Repository
 public class JobDAOImpl implements JobDAO {
 
     private Collection<Job> JobData;
 
-    public JobDAOImpl(Collection<Job> jobData) {
+    public JobDAOImpl() {
         JobData = new ArrayList<>();
 
-        JobData.add(new Job(1,"Takarító", Education.általános, 60000, "Miskolc", "Épület takarítása."));
-        JobData.add(new Job(2, "Tanító", Education.egyetem, 125000, "Eger", "1-4 osztályos diákok oktatása."));
+        JobData.add(new Job("Susan", 1, "OpenOffice Development Kukutyin Team", "Android application development based on java", Education.egyetem, Languages.java, "Miskolc", 160000));
+        JobData.add(new Job("Susan", 2, "Working on home!", "Working on future technologies", Education.egyetem, Languages.html, "Budapest", 300000));
+        JobData.add(new Job("Albert", 3, "Idontknowwhatitis", "Just do some tutorial application", Education.közép, Languages.python, "Eger", 120000));
+
     }
 
     @Override

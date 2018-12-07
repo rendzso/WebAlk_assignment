@@ -2,67 +2,87 @@ package hu.iit.me.model;
 
 public class Job {
 
-    private int j_ID;
-    private String j_name;
-    private Education j_req_education;
-    private int j_price;
-    private String j_place;
-    private String j_description;
+    private String HR_ID;
+    private int job_ID;
+    private String job_Name;
+    private String job_Description;
+    private Education job_EduReq;
+    private Languages job_LangReq;
+    private String job_Place;
+    private int job_Money;
 
-    public Job(int j_ID, String j_name, Education j_req_education, int j_price, String j_place, String j_description) {
-        this.j_ID = j_ID;
-        this.j_name = j_name;
-        this.j_req_education = j_req_education;
-        this.j_price = j_price;
-        this.j_place = j_place;
-        this.j_description = j_description;
+    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money) {
+        this.HR_ID = HR_ID;
+        this.job_ID = job_ID;
+        this.job_Name = job_Name;
+        this.job_Description = job_Description;
+        this.job_EduReq = job_EduReq;
+        this.job_LangReq = job_LangReq;
+        this.job_Place = job_Place;
+        this.job_Money = job_Money;
     }
 
-    public int getJ_ID() {
-        return j_ID;
+    public String getHR_ID() {
+        return HR_ID;
     }
 
-    public void setJ_ID(int j_ID) {
-        this.j_ID = j_ID;
+    public void setHR_ID(String HR_ID) {
+        this.HR_ID = HR_ID;
     }
 
-    public String getJ_name() {
-        return j_name;
+    public int getJob_ID() {
+        return job_ID;
     }
 
-    public void setJ_name(String j_name) {
-        this.j_name = j_name;
+    public void setJob_ID(int job_ID) {
+        this.job_ID = job_ID;
     }
 
-    public Education getJ_req_education() {
-        return j_req_education;
+    public String getJob_Name() {
+        return job_Name;
     }
 
-    public void setJ_req_education(Education j_req_education) {
-        this.j_req_education = j_req_education;
+    public void setJob_Name(String job_Name) {
+        this.job_Name = job_Name;
     }
 
-    public int getJ_price() {
-        return j_price;
+    public String getJob_Description() {
+        return job_Description;
     }
 
-    public void setJ_price(int j_price) {
-        this.j_price = j_price;
+    public void setJob_Description(String job_Description) {
+        this.job_Description = job_Description;
     }
 
-    public String getJ_place() {
-        return j_place;
+    public Education getJob_EduReq() {
+        return job_EduReq;
     }
 
-    public void setJ_place(String j_place) {
-        this.j_place = j_place;
+    public void setJob_EduReq(Education job_EduReq) {
+        this.job_EduReq = job_EduReq;
     }
 
-    public String getJ_description() {
-        return j_description;
+    public Languages getJob_LangReq() {
+        return job_LangReq;
     }
 
-    public void setJ_description(String j_description) {
-        this.j_description = j_description;
+    public void setJob_LangReq(Languages job_LangReq) {
+        this.job_LangReq = job_LangReq;
+    }
+
+    public String getJob_Place() {
+        return job_Place;
+    }
+
+    public void setJob_Place(String job_Place) {
+        this.job_Place = job_Place;
+    }
+
+    public int getJob_Money() {
+        return job_Money;
+    }
+
+    public void setJob_Money(int job_Money) {
+        this.job_Money = job_Money;
     }
 }
