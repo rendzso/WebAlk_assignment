@@ -1,5 +1,7 @@
 package hu.iit.me.controller;
 
+import hu.iit.me.converter.Converter;
+import hu.iit.me.dto.JobDTO;
 import hu.iit.me.model.Job;
 import hu.iit.me.service.JobService;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ public class JobController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<Job> listJobs(){return jobService.job_list();}
+    public Collection<JobDTO> listJobs(){return Converter.MarchallList(jobService.job_list());
+    }
 
 }

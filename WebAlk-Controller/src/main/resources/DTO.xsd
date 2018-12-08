@@ -4,6 +4,7 @@
     <xs:complexType name="JobDTO">
         <xs:all>
             <xs:element name="HR_ID" type="xs:string"/>
+            <xs:element name="job_ID" type="xs:int"/>
             <xs:element name="job_Name" type="xs:string"/>
             <xs:element name="job_Description" type="xs:string"/>
             <xs:element name="job_EduReq">
