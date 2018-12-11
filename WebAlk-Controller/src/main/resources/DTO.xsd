@@ -29,6 +29,7 @@
             </xs:element>
             <xs:element name="job_Place" type="xs:string"/>
             <xs:element name="job_Money" type="xs:int"/>
+            <xs:element name="contact" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 

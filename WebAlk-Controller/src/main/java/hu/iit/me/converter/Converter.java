@@ -11,7 +11,7 @@ import java.util.Collection;
 public class Converter {
 
     public static Job unMarshall(JobDTO jobDTO){
-        return new Job(jobDTO.getHRID(), jobDTO.getJobID(), jobDTO.getJobName(), jobDTO.getJobDescription(), Education.valueOf(jobDTO.getJobEduReq()), Languages.valueOf(jobDTO.getJobLangReq()), jobDTO.getJobPlace(), jobDTO.getJobMoney());
+        return new Job(jobDTO.getHRID(), jobDTO.getJobID(), jobDTO.getJobName(), jobDTO.getJobDescription(), Education.valueOf(jobDTO.getJobEduReq()), Languages.valueOf(jobDTO.getJobLangReq()), jobDTO.getJobPlace(), jobDTO.getJobMoney(), jobDTO.getContact());
     }
 
 
@@ -26,6 +26,7 @@ public class Converter {
         jobDTO.setJobLangReq(job.getJob_LangReq().toString());
         jobDTO.setJobPlace(job.getJob_Place());
         jobDTO.setJobMoney(job.getJob_Money());
+        jobDTO.setContact(job.getContact());
 
         return jobDTO;
 

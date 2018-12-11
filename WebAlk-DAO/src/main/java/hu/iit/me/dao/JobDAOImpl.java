@@ -16,9 +16,9 @@ public class JobDAOImpl implements JobDAO {
     public JobDAOImpl() {
         JobData = new ArrayList<>();
 
-        JobData.add(new Job("Susan", 1, "OpenOffice Development Kukutyin Team", "Android application development based on java", Education.egyetem, Languages.java, "Miskolc", 160000));
-        JobData.add(new Job("Susan", 2, "Working on home!", "Working on future technologies", Education.egyetem, Languages.html, "Budapest", 300000));
-        JobData.add(new Job("Albert", 3, "Idontknowwhatitis", "Just do some tutorial application", Education.közép, Languages.python, "Eger", 120000));
+        JobData.add(new Job("Susan", 1, "OpenOffice Development Kukutyin Team", "Android application development based on java", Education.egyetem, Languages.java, "Miskolc", 160000, "alma@gmail.com"));
+        JobData.add(new Job("Susan", 2, "Working on home!", "Working on future technologies", Education.egyetem, Languages.html, "Budapest", 300000, "alma@gmail.com"));
+        JobData.add(new Job("Albert", 3, "Idontknowwhatitis", "Just do some tutorial application", Education.közép, Languages.python, "Eger", 120000, "bestjobs@gmail.com"));
 
     }
 
@@ -26,4 +26,12 @@ public class JobDAOImpl implements JobDAO {
     public Collection<Job> job_list() {
         return JobData;
     }
+
+    @Override
+    public void job_add(Job newjob) {
+
+        JobData.add(newjob);
+
+    }
+
 }

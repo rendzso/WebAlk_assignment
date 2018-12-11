@@ -2,7 +2,6 @@ package hu.iit.me.controller;
 
 import hu.iit.me.converter.Converter;
 import hu.iit.me.dto.JobDTO;
-import hu.iit.me.model.Job;
 import hu.iit.me.service.JobService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

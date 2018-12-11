@@ -10,8 +10,9 @@ public class Job {
     private Languages job_LangReq;
     private String job_Place;
     private int job_Money;
+    private String contact;
 
-    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money) {
+    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money, String contact) {
         this.HR_ID = HR_ID;
         this.job_ID = job_ID;
         this.job_Name = job_Name;
@@ -20,6 +21,7 @@ public class Job {
         this.job_LangReq = job_LangReq;
         this.job_Place = job_Place;
         this.job_Money = job_Money;
+        this.contact = contact;
     }
 
     public String getHR_ID() {
@@ -84,5 +86,13 @@ public class Job {
 
     public void setJob_Money(int job_Money) {
         this.job_Money = job_Money;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 }

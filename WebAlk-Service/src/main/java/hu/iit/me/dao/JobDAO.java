@@ -8,4 +8,6 @@ public interface JobDAO {
 
     public Collection<Job> job_list();
 
+    public void job_add(Job newjob);
+
 }
