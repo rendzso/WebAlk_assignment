@@ -16,6 +16,8 @@ public interface JobService {
 
     public Collection<Job> searchWithLanguage(String language);
 
+    public Collection<Job> searchWithEducation(String education);
+
 
 
 }

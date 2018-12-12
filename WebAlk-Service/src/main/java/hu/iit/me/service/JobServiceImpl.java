@@ -84,4 +84,17 @@ public class JobServiceImpl implements JobService {
 
         return job;
     }
+
+    @Override
+    public Collection<Job> searchWithEducation(String education) {
+        Collection<Job> job = new ArrayList<>();
+
+        for(Job jobs : jobDAO.job_list()){
+            if(jobs.getJob_EduReq().toString().equals(education)){
+                job.add(jobs);
+            }
+        }
+
+        return job;
+    }
 }

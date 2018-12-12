@@ -21,7 +21,9 @@ public class HRController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public void addJob(@RequestBody JobDTOHR newJob){hrService.addNewJob(ConverterHR.unMarshallHR(newJob));}
+    public Collection<JobDTOHR> addJob(@RequestBody JobDTOHR newJob){ hrService.addNewJob(ConverterHR.unMarshallHR(newJob));
+    return ConverterHR.MarchallListHR(hrService.listByHR());
+    }
 
     @RequestMapping(value = "/listByABC", method = RequestMethod.GET)
     @ResponseBody
