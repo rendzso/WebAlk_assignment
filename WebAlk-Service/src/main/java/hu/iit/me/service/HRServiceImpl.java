@@ -48,4 +48,40 @@ public class HRServiceImpl implements HRService{
         return job;
 
     }
+
+    @Override
+    public Job searchWithID(int ID) {
+        for(Job jobs : jobDAO.job_list()){
+            if(jobs.getJob_ID() == ID){
+                return jobs;
+            }
+        }
+        return null;
+
+    }
+
+    @Override
+    public Collection<Job> listByHRWithDegreese(String HR) {
+        ArrayList<Job> job = new ArrayList<>();
+
+        for(Job jobs : jobDAO.job_list()){
+            if(jobs.getHR_ID().equals(HR)){
+                job.add(jobs);
+            }
+        }
+
+        Collections.sort(job, new Comparator<Job>() {
+            @Override
+            public int compare(Job job1, Job job2) {
+                if(job1.getJob_Money() <= job2.getJob_Money()){
+                    return 1;
+                }
+                else{
+                    return -1;
+                }
+            }
+        });
+
+        return job;
+    }
 }

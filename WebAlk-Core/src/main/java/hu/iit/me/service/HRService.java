@@ -12,4 +12,8 @@ public interface HRService {
 
     public Collection<Job> searchHR(String HR);
 
+    public Job searchWithID(int ID);
+
+    public Collection<Job> listByHRWithDegreese(String HR);
+
 }
