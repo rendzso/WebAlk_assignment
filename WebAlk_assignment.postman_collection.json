@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "ad04b42e-c178-474a-b42a-d6c327b25d67",
+		"name": "WebAlk_assignment",
+		"description": "Test for the assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/jobs/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/jobs/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/jobs/searchWithName?name=Kukutyin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jobs/searchWithName?name=Kukutyin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"searchWithName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Kukutyin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/jobs/searchWithMinMoney?money=140000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jobs/searchWithMinMoney?money=140000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"searchWithMinMoney"
+					],
+					"query": [
+						{
+							"key": "money",
+							"value": "140000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/jobs/searchWithPlace?place=Budapest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jobs/searchWithPlace?place=Budapest",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"searchWithPlace"
+					],
+					"query": [
+						{
+							"key": "place",
+							"value": "Budapest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/jobs/searchWithLanguage?language=html",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jobs/searchWithLanguage?language=html",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"searchWithLanguage"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "html"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/jobs/searchWithEducation?education=egyetem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jobs/searchWithEducation?education=egyetem",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobs",
+						"searchWithEducation"
+					],
+					"query": [
+						{
+							"key": "education",
+							"value": "egyetem"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/HR/add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"hrid\": \"Alabama\",\n        \"jobID\": 6,\n        \"jobName\": \"Blablamáshogy\",\n        \"jobDescription\": \"Blabla\",\n        \"jobEduReq\": \"felső\",\n        \"jobLangReq\": \"java\",\n        \"jobPlace\": \"Miskolc\",\n        \"jobMoney\": 200000,\n        \"contact\": \"probahr@gmail.com\"\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/HR/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HR",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/HR/searchWithID?ID=3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/HR/searchWithID?ID=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HR",
+						"searchWithID"
+					],
+					"query": [
+						{
+							"key": "ID",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/HR/listByABC",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/HR/listByABC",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HR",
+						"listByABC"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/HR//searchHR?HR=Susan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/HR//searchHR?HR=Susan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HR",
+						"",
+						"searchHR"
+					],
+					"query": [
+						{
+							"key": "HR",
+							"value": "Susan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/HR/listByHRWithDegreese?HR=Susan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/HR/listByHRWithDegreese?HR=Susan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HR",
+						"listByHRWithDegreese"
+					],
+					"query": [
+						{
+							"key": "HR",
+							"value": "Susan"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
