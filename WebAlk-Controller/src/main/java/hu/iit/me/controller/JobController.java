@@ -42,4 +42,10 @@ public class JobController {
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithPlace(place));
     }
 
+    @RequestMapping(value = "/searchWithLanguage")
+    @ResponseBody
+    public Collection<JobDTOnonHR> searchWithLanguage(@RequestParam(value = "language") String language){
+        return ConverterNonHR.MarchallListNonHR(jobService.searchWithLanguage(language));
+    }
+
 }

@@ -71,4 +71,17 @@ public class JobServiceImpl implements JobService {
 
         return job;
     }
+
+    @Override
+    public Collection<Job> searchWithLanguage(String language) {
+        Collection<Job> job = new ArrayList<>();
+
+        for(Job jobs : jobDAO.job_list()){
+            if(jobs.getJob_LangReq().toString().equals(language)){
+                job.add(jobs);
+            }
+        }
+
+        return job;
+    }
 }

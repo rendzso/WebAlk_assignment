@@ -14,6 +14,8 @@ public interface JobService {
 
     public Collection<Job> searchWithPlace(String place);
 
+    public Collection<Job> searchWithLanguage(String language);
+
 
 
 }

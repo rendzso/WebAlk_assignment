@@ -34,4 +34,5 @@ public class HRController {
         return ConverterHR.MarchallListHR(hrService.searchHR(HR));
     }
 
+
 }
