@@ -1,5 +1,8 @@
 package hu.iit.me.model;
 
+import hu.iit.me.Exceptions.InvalidIDException;
+import hu.iit.me.Exceptions.TooLowMoneyException;
+
 public class Job {
 
     private String HR_ID;
@@ -12,15 +15,25 @@ public class Job {
     private int job_Money;
     private String contact;
 
-    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money, String contact) {
+    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money, String contact) throws InvalidIDException, TooLowMoneyException {
         this.HR_ID = HR_ID;
-        this.job_ID = job_ID;
+        if(job_ID > 0) {
+            this.job_ID = job_ID;
+        }
+        else{
+            throw new InvalidIDException();
+        }
         this.job_Name = job_Name;
         this.job_Description = job_Description;
         this.job_EduReq = job_EduReq;
         this.job_LangReq = job_LangReq;
         this.job_Place = job_Place;
-        this.job_Money = job_Money;
+        if(job_Money > 78000) {
+            this.job_Money = job_Money;
+        }
+        else{
+            throw new TooLowMoneyException();
+        }
         this.contact = contact;
     }
 
@@ -36,8 +49,13 @@ public class Job {
         return job_ID;
     }
 
-    public void setJob_ID(int job_ID) {
-        this.job_ID = job_ID;
+    public void setJob_ID(int job_ID) throws InvalidIDException {
+        if(job_ID > 0) {
+            this.job_ID = job_ID;
+        }
+        else{
+            throw new InvalidIDException();
+        }
     }
 
     public String getJob_Name() {
@@ -84,8 +102,13 @@ public class Job {
         return job_Money;
     }
 
-    public void setJob_Money(int job_Money) {
-        this.job_Money = job_Money;
+    public void setJob_Money(int job_Money) throws TooLowMoneyException {
+        if(job_Money > 78000) {
+            this.job_Money = job_Money;
+        }
+        else{
+            throw new TooLowMoneyException();
+        }
     }
 
     public String getContact() {

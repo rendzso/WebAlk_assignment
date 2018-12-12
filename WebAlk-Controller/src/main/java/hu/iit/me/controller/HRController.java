@@ -1,5 +1,7 @@
 package hu.iit.me.controller;
 
+import hu.iit.me.Exceptions.InvalidIDException;
+import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.converter.ConverterHR;
 import hu.iit.me.dto.JobDTOHR;
 import hu.iit.me.model.Job;
@@ -22,7 +24,7 @@ public class HRController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Collection<JobDTOHR> addJob(@RequestBody JobDTOHR newJob){ hrService.addNewJob(ConverterHR.unMarshallHR(newJob));
+    public Collection<JobDTOHR> addJob(@RequestBody JobDTOHR newJob) throws InvalidIDException, TooLowMoneyException { hrService.addNewJob(ConverterHR.unMarshallHR(newJob));
     return ConverterHR.MarchallListHR(hrService.listByHR());
     }
 

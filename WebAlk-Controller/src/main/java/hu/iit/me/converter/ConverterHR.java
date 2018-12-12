@@ -1,5 +1,7 @@
 package hu.iit.me.converter;
 
+import hu.iit.me.Exceptions.InvalidIDException;
+import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.dto.JobDTOHR;
 import hu.iit.me.model.Education;
 import hu.iit.me.model.Job;
@@ -10,7 +12,7 @@ import java.util.Collection;
 
 public class ConverterHR {
 
-    public static Job unMarshallHR(JobDTOHR jobDTO){
+    public static Job unMarshallHR(JobDTOHR jobDTO) throws InvalidIDException, TooLowMoneyException {
         return new Job(jobDTO.getHRID(), jobDTO.getJobID(), jobDTO.getJobName(), jobDTO.getJobDescription(), Education.valueOf(jobDTO.getJobEduReq()), Languages.valueOf(jobDTO.getJobLangReq()), jobDTO.getJobPlace(), jobDTO.getJobMoney(), jobDTO.getContact());
     }
 
