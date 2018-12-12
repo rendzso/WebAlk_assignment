@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
-import static java.sql.Types.NULL;
 
 public class HRServiceImpl implements HRService{
 
@@ -22,6 +21,8 @@ public class HRServiceImpl implements HRService{
 
     @Override
     public void addNewJob(Job newJob) throws JobIDAlreadyExistsException, JobIsExistsException {
+
+
         for(Job j : jobDAO.job_list()){
             if(j.getJob_ID() == newJob.getJob_ID()){
                 throw new JobIDAlreadyExistsException();
