@@ -1,5 +1,7 @@
 package hu.iit.me.controller;
 
+import hu.iit.me.Exceptions.DataNotFoundException;
+import hu.iit.me.Exceptions.SearchTagIsEmptyException;
 import hu.iit.me.converter.ConverterNonHR;
 import hu.iit.me.dto.JobDTOnonHR;
 import hu.iit.me.service.JobService;
@@ -22,35 +24,35 @@ public class JobController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<JobDTOnonHR> listJobs(){return ConverterNonHR.MarchallListNonHR(jobService.job_list());}
+    public Collection<JobDTOnonHR> listJobs() throws DataNotFoundException {return ConverterNonHR.MarchallListNonHR(jobService.job_list());}
 
     @RequestMapping(value = "/searchWithName")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithName(@RequestParam(value = "name") String name){
+    public Collection<JobDTOnonHR> searchWithName(@RequestParam(value = "name") String name) throws DataNotFoundException, SearchTagIsEmptyException {
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithName(name));
     }
 
     @RequestMapping(value = "/searchWithMinMoney")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithMinMoney(@RequestParam(value = "money") int money){
+    public Collection<JobDTOnonHR> searchWithMinMoney(@RequestParam(value = "money") int money) throws DataNotFoundException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithMinMoney(money));
     }
 
     @RequestMapping(value = "/searchWithPlace")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithPlace(@RequestParam(value = "place") String place){
+    public Collection<JobDTOnonHR> searchWithPlace(@RequestParam(value = "place") String place) throws DataNotFoundException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithPlace(place));
     }
 
     @RequestMapping(value = "/searchWithLanguage")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithLanguage(@RequestParam(value = "language") String language){
+    public Collection<JobDTOnonHR> searchWithLanguage(@RequestParam(value = "language") String language) throws DataNotFoundException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithLanguage(language));
     }
 
     @RequestMapping(value = "/searchWithEducation")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithEducation(@RequestParam(value = "education") String education){
+    public Collection<JobDTOnonHR> searchWithEducation(@RequestParam(value = "education") String education) throws DataNotFoundException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithEducation(education));
     }
 

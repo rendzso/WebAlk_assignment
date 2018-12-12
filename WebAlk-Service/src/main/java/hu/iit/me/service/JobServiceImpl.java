@@ -1,5 +1,7 @@
 package hu.iit.me.service;
 
+import hu.iit.me.Exceptions.DataNotFoundException;
+import hu.iit.me.Exceptions.SearchTagIsEmptyException;
 import hu.iit.me.dao.JobDAO;
 import hu.iit.me.model.Job;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +17,42 @@ public class JobServiceImpl implements JobService {
     private JobDAO jobDAO;
 
     @Override
-    public Collection<Job> job_list() {
-        return jobDAO.job_list();
+    public Collection<Job> job_list() throws DataNotFoundException {
+        if(jobDAO.job_list().isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return jobDAO.job_list();
+        }
     }
 
     @Override
-    public Collection<Job> searchWithName(String name) {
+    public Collection<Job> searchWithName(String name) throws DataNotFoundException, SearchTagIsEmptyException {
 
         Collection<Job> job = new ArrayList<>();
 
         for(Job jobs : jobDAO.job_list()){
-            if(jobs.getJob_Name().contains(name)){
-                job.add(jobs);
+            if(name.isEmpty()) {
+                throw new SearchTagIsEmptyException();
+            }
+            else {
+                if (jobs.getJob_Name().contains(name)) {
+                    job.add(jobs);
+                }
             }
         }
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
+
     }
 
     @Override
-    public Collection<Job> searchWithMinMoney(int money) {
+    public Collection<Job> searchWithMinMoney(int money) throws DataNotFoundException {
 
         ArrayList<Job> job = new ArrayList<>();
 
@@ -56,11 +74,16 @@ public class JobServiceImpl implements JobService {
             }
         });
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 
     @Override
-    public Collection<Job> searchWithPlace(String place) {
+    public Collection<Job> searchWithPlace(String place) throws DataNotFoundException {
         Collection<Job> job = new ArrayList<>();
 
         for(Job jobs : jobDAO.job_list()){
@@ -69,11 +92,16 @@ public class JobServiceImpl implements JobService {
             }
         }
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 
     @Override
-    public Collection<Job> searchWithLanguage(String language) {
+    public Collection<Job> searchWithLanguage(String language) throws DataNotFoundException {
         Collection<Job> job = new ArrayList<>();
 
         for(Job jobs : jobDAO.job_list()){
@@ -82,11 +110,16 @@ public class JobServiceImpl implements JobService {
             }
         }
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 
     @Override
-    public Collection<Job> searchWithEducation(String education) {
+    public Collection<Job> searchWithEducation(String education) throws DataNotFoundException {
         Collection<Job> job = new ArrayList<>();
 
         for(Job jobs : jobDAO.job_list()){
@@ -95,6 +128,11 @@ public class JobServiceImpl implements JobService {
             }
         }
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 }
