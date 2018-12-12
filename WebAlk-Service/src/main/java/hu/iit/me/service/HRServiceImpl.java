@@ -32,4 +32,20 @@ public class HRServiceImpl implements HRService{
 
         return job;
     }
+
+
+    @Override
+    public Collection<Job> searchHR(String HR) {
+
+        Collection<Job> job = new ArrayList<>();
+
+        for(Job jobs : jobDAO.job_list()){
+            if(jobs.getHR_ID().equals(HR)){
+                job.add(jobs);
+            }
+        }
+
+        return job;
+
+    }
 }

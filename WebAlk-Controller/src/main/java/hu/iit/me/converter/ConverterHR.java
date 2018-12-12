@@ -1,6 +1,6 @@
 package hu.iit.me.converter;
 
-import hu.iit.me.dto.JobDTO;
+import hu.iit.me.dto.JobDTOHR;
 import hu.iit.me.model.Education;
 import hu.iit.me.model.Job;
 import hu.iit.me.model.Languages;
@@ -8,15 +8,15 @@ import hu.iit.me.model.Languages;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Converter {
+public class ConverterHR {
 
-    public static Job unMarshall(JobDTO jobDTO){
+    public static Job unMarshallHR(JobDTOHR jobDTO){
         return new Job(jobDTO.getHRID(), jobDTO.getJobID(), jobDTO.getJobName(), jobDTO.getJobDescription(), Education.valueOf(jobDTO.getJobEduReq()), Languages.valueOf(jobDTO.getJobLangReq()), jobDTO.getJobPlace(), jobDTO.getJobMoney(), jobDTO.getContact());
     }
 
 
-    public static JobDTO Marshall(Job job){
-        JobDTO jobDTO = new JobDTO();
+    public static JobDTOHR MarshallHR(Job job){
+        JobDTOHR jobDTO = new JobDTOHR();
 
         jobDTO.setHRID(job.getHR_ID());
         jobDTO.setJobID(job.getJob_ID());
@@ -32,11 +32,11 @@ public class Converter {
 
     }
 
-    public static Collection<JobDTO> MarchallList(Collection<Job> jobs){
-        Collection<JobDTO> jobDTO = new ArrayList<>();
+    public static Collection<JobDTOHR> MarchallListHR(Collection<Job> jobs){
+        Collection<JobDTOHR> jobDTO = new ArrayList<>();
 
         for(Job job: jobs){
-            jobDTO.add(Marshall(job));
+            jobDTO.add(MarshallHR(job));
         }
 
         return jobDTO;

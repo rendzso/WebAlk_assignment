@@ -10,4 +10,6 @@ public interface HRService {
 
     public Collection<Job> listByHR();
 
+    public Collection<Job> searchHR(String HR);
+
 }

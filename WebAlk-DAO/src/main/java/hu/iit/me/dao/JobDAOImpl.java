@@ -27,6 +27,8 @@ public class JobDAOImpl implements JobDAO {
         return JobData;
     }
 
+
+
     @Override
     public void job_add(Job newjob) {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-    <xs:complexType name="JobDTO">
+    <xs:complexType name="JobDTOHR">
         <xs:all>
             <xs:element name="HR_ID" type="xs:string"/>
             <xs:element name="job_ID" type="xs:int"/>
@@ -32,5 +32,37 @@
             <xs:element name="contact" type="xs:string"/>
         </xs:all>
     </xs:complexType>
+
+    <xs:complexType name="JobDTOnonHR">
+        <xs:all>
+            <xs:element name="job_ID" type="xs:int"/>
+            <xs:element name="job_Name" type="xs:string"/>
+            <xs:element name="job_Description" type="xs:string"/>
+            <xs:element name="job_EduReq">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="általános"/>
+                        <xs:enumeration value="közép"/>
+                        <xs:enumeration value="felső"/>
+                        <xs:enumeration value="egyetem"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="job_LangReq">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="c"/>
+                        <xs:enumeration value="html"/>
+                        <xs:enumeration value="java"/>
+                        <xs:enumeration value="python"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="job_Place" type="xs:string"/>
+            <xs:element name="job_Money" type="xs:int"/>
+            <xs:element name="contact" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
 
 </xs:schema>
