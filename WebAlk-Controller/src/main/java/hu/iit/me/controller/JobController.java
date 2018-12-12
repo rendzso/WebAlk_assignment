@@ -2,6 +2,7 @@ package hu.iit.me.controller;
 
 import hu.iit.me.Exceptions.DataNotFoundException;
 import hu.iit.me.Exceptions.SearchTagIsEmptyException;
+import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.converter.ConverterNonHR;
 import hu.iit.me.dto.JobDTOnonHR;
 import hu.iit.me.service.JobService;
@@ -34,25 +35,25 @@ public class JobController {
 
     @RequestMapping(value = "/searchWithMinMoney")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithMinMoney(@RequestParam(value = "money") int money) throws DataNotFoundException{
+    public Collection<JobDTOnonHR> searchWithMinMoney(@RequestParam(value = "money") String money) throws DataNotFoundException, SearchTagIsEmptyException, TooLowMoneyException {
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithMinMoney(money));
     }
 
     @RequestMapping(value = "/searchWithPlace")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithPlace(@RequestParam(value = "place") String place) throws DataNotFoundException{
+    public Collection<JobDTOnonHR> searchWithPlace(@RequestParam(value = "place") String place) throws DataNotFoundException, SearchTagIsEmptyException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithPlace(place));
     }
 
     @RequestMapping(value = "/searchWithLanguage")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithLanguage(@RequestParam(value = "language") String language) throws DataNotFoundException{
+    public Collection<JobDTOnonHR> searchWithLanguage(@RequestParam(value = "language") String language) throws DataNotFoundException, SearchTagIsEmptyException {
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithLanguage(language));
     }
 
     @RequestMapping(value = "/searchWithEducation")
     @ResponseBody
-    public Collection<JobDTOnonHR> searchWithEducation(@RequestParam(value = "education") String education) throws DataNotFoundException{
+    public Collection<JobDTOnonHR> searchWithEducation(@RequestParam(value = "education") String education) throws DataNotFoundException, SearchTagIsEmptyException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithEducation(education));
     }
 

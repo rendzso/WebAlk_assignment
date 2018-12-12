@@ -1,5 +1,6 @@
 package hu.iit.me.dao;
 
+import hu.iit.me.Exceptions.EmailFormatException;
 import hu.iit.me.Exceptions.InvalidIDException;
 import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.model.Education;
@@ -15,7 +16,7 @@ public class JobDAOImpl implements JobDAO {
 
     private Collection<Job> JobData;
 
-    public JobDAOImpl() throws InvalidIDException, TooLowMoneyException {
+    public JobDAOImpl() throws InvalidIDException, TooLowMoneyException, EmailFormatException {
         JobData = new ArrayList<>();
 
         JobData.add(new Job("Susan", 1, "OpenOffice Development Kukutyin Team", "Android application development based on java", Education.egyetem, Languages.java, "Miskolc", 160000, "alma@gmail.com"));

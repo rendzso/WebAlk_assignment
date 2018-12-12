@@ -1,5 +1,6 @@
 package config;
 
+import hu.iit.me.Exceptions.EmailFormatException;
 import hu.iit.me.Exceptions.InvalidIDException;
 import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.dao.JobDAO;
@@ -17,7 +18,7 @@ public class JobMethodContext {
     }
 
     @Bean
-    public JobDAO jobDAO() throws InvalidIDException, TooLowMoneyException {return new JobDAOImpl();
+    public JobDAO jobDAO() throws InvalidIDException, TooLowMoneyException, EmailFormatException {return new JobDAOImpl();
     }
 
 

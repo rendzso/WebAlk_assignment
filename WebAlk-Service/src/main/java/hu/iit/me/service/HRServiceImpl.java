@@ -1,5 +1,9 @@
 package hu.iit.me.service;
 
+import hu.iit.me.Exceptions.DataNotFoundException;
+import hu.iit.me.Exceptions.JobIDAlreadyExistsException;
+import hu.iit.me.Exceptions.JobIsExistsException;
+import hu.iit.me.Exceptions.SearchTagIsEmptyException;
 import hu.iit.me.dao.JobDAO;
 import hu.iit.me.model.Job;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,18 +13,29 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
+import static java.sql.Types.NULL;
+
 public class HRServiceImpl implements HRService{
 
     @Autowired
     private JobDAO jobDAO;
 
     @Override
-    public void addNewJob(Job newJob) {
+    public void addNewJob(Job newJob) throws JobIDAlreadyExistsException, JobIsExistsException {
+        for(Job j : jobDAO.job_list()){
+            if(j.getJob_ID() == newJob.getJob_ID()){
+                throw new JobIDAlreadyExistsException();
+            }
+            if(j.getJob_Name().equals(newJob.getJob_Name())){
+                throw new JobIsExistsException();
+            }
+        }
+
         jobDAO.job_add(newJob);
     }
 
     @Override
-    public Collection<Job> listByHR() {
+    public Collection<Job> listByHR() throws DataNotFoundException {
         ArrayList<Job> job = new ArrayList(jobDAO.job_list());
 
         Collections.sort(job, new Comparator<Job>() {
@@ -30,12 +45,21 @@ public class HRServiceImpl implements HRService{
             }
         });
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 
 
     @Override
-    public Collection<Job> searchHR(String HR) {
+    public Collection<Job> searchHR(String HR) throws DataNotFoundException, SearchTagIsEmptyException {
+
+        if(HR.isEmpty()){
+            throw new SearchTagIsEmptyException();
+        }
 
         Collection<Job> job = new ArrayList<>();
 
@@ -45,23 +69,41 @@ public class HRServiceImpl implements HRService{
             }
         }
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
 
     }
 
     @Override
-    public Job searchWithID(int ID) {
+    public Job searchWithID(String IDS) throws DataNotFoundException, SearchTagIsEmptyException {
+
+        if(IDS.isEmpty()){
+            throw new SearchTagIsEmptyException();
+        }
+
+        int ID = Integer.parseInt(IDS);
+
         for(Job jobs : jobDAO.job_list()){
             if(jobs.getJob_ID() == ID){
                 return jobs;
             }
         }
-        return null;
+
+        throw new DataNotFoundException();
 
     }
 
     @Override
-    public Collection<Job> listByHRWithDegreese(String HR) {
+    public Collection<Job> listByHRWithDegreese(String HR) throws SearchTagIsEmptyException, DataNotFoundException {
+
+        if(HR.isEmpty()){
+            throw new SearchTagIsEmptyException();
+        }
+
         ArrayList<Job> job = new ArrayList<>();
 
         for(Job jobs : jobDAO.job_list()){
@@ -82,6 +124,11 @@ public class HRServiceImpl implements HRService{
             }
         });
 
-        return job;
+        if(job.isEmpty()){
+            throw new DataNotFoundException();
+        }
+        else{
+            return job;
+        }
     }
 }

@@ -1,9 +1,16 @@
 package hu.iit.me.model;
 
+import hu.iit.me.Exceptions.EmailFormatException;
 import hu.iit.me.Exceptions.InvalidIDException;
 import hu.iit.me.Exceptions.TooLowMoneyException;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Job {
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     private String HR_ID;
     private int job_ID;
@@ -15,7 +22,7 @@ public class Job {
     private int job_Money;
     private String contact;
 
-    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money, String contact) throws InvalidIDException, TooLowMoneyException {
+    public Job(String HR_ID, int job_ID, String job_Name, String job_Description, Education job_EduReq, Languages job_LangReq, String job_Place, int job_Money, String contact) throws InvalidIDException, TooLowMoneyException, EmailFormatException {
         this.HR_ID = HR_ID;
         if(job_ID > 0) {
             this.job_ID = job_ID;
@@ -34,7 +41,13 @@ public class Job {
         else{
             throw new TooLowMoneyException();
         }
-        this.contact = contact;
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(contact);
+        if(matcher.find()){
+            this.contact = contact;
+        } else{
+            throw new EmailFormatException();
+        }
+
     }
 
     public String getHR_ID() {
@@ -115,7 +128,12 @@ public class Job {
         return contact;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setContact(String contact) throws EmailFormatException {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(contact);
+        if(matcher.find()){
+            this.contact = contact;
+        } else{
+            throw new EmailFormatException();
+        }
     }
 }
