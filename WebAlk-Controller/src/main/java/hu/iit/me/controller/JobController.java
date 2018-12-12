@@ -6,11 +6,9 @@ import hu.iit.me.Exceptions.TooLowMoneyException;
 import hu.iit.me.converter.ConverterNonHR;
 import hu.iit.me.dto.JobDTOnonHR;
 import hu.iit.me.service.JobService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -55,6 +53,24 @@ public class JobController {
     @ResponseBody
     public Collection<JobDTOnonHR> searchWithEducation(@RequestParam(value = "education") String education) throws DataNotFoundException, SearchTagIsEmptyException{
         return ConverterNonHR.MarchallListNonHR(jobService.searchWithEducation(education));
+    }
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No data found with that argument!")
+    @ExceptionHandler(DataNotFoundException.class)
+    public void DataNotFoundExceptionHandler(){
+        //TODO
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "The argument is empty!")
+    @ExceptionHandler(SearchTagIsEmptyException.class)
+    public void SearchTagEmptyExeptionHandler(){
+        //TODO
+    }
+
+    @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "The money doesnt reach the 'minimálbér'")
+    @ExceptionHandler(TooLowMoneyException.class)
+    public void TooLowMoneyExceptionHandler(){
+        //TODO
     }
 
 }
